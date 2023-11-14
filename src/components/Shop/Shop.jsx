@@ -4,6 +4,8 @@ import Product from '../Product/Product';
 import './Shop.css'
 import Cart from '../Cart/Cart';
 import { addToDb, deleteShoppingCart, getShoppingCart } from '../../fakeData/fakeDb';
+import toast, { Toaster } from 'react-hot-toast';
+
 const Shop = () => {
     const loader = useLoaderData();
     const products = loader; 
@@ -46,17 +48,22 @@ const Shop = () => {
         setCart([]);
         deleteShoppingCart();
     }
+    let path='/shop'; 
+    if(cart.length!=0) path='/order';
+    const toasting=()=>
+    {
+        if(cart.length===0) {toast('Your Cart is Empty'); } 
+    } 
     return (
-        <div className='shop'>
-            
-            <div className='product-container'>
+        <div className='shop'> 
+            <div className='product-container'> 
                 {
                     products.map(product => <Product handleAddProduct={handleAddProduct} product={product} key={product.id}></Product>)
                 }
             </div>
             <div className="cart-container">
                 <Cart handleDeleteCart={handleDeleteCart} cart={cart}>
-                    <Link to='/order'>Review Order</Link>
+                    <Link onClick={toasting} to={path}>Review Order</Link>
                 </Cart>
             </div>
         </div>
