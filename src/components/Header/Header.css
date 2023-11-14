@@ -1,0 +1,18 @@
+.header{
+    background-color: rgb(17, 52, 58) ;
+    line-height: 40px;
+}
+.header a{
+    text-decoration: none;
+    font-size: 20px;
+    margin-right: 20px;
+    color: beige;
+    padding: 10px;
+}
+.header a:hover{
+    color: orange;
+}
+.active{
+    background-color: rgb(3, 19, 22) ;
+}
+ 
